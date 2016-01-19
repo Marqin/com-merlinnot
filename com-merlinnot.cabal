@@ -1,5 +1,11 @@
 name:              com-merlinnot
+synopsis:          merlinnot.com
+description:       merlinnot.com website, including homepage and blog
+category:          none
+maintainer:        Natan Sągol <m@merlinnot.com>
 version:           0.0.0
+license:           MIT
+license-file:      LICENSE.md
 cabal-version:     >= 1.8
 build-type:        Simple
 
