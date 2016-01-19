@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-.idea/
-=======
->>>>>>> feature/config
 dist*
 static/tmp/
 static/combined/
