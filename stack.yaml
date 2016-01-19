@@ -6,7 +6,7 @@ packages:
 extra-deps: []
 
 flags:
-  my-project:
+  com-merlinnot:
     library-only: false
     dev: false
 
