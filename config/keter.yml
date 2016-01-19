@@ -1,0 +1,25 @@
+stanzas:
+  - type: webapp
+    exec: ../dist/bin/com-merlinnot
+    args: []
+
+    hosts:
+      - merlinnot.com
+
+    requires-secure: false
+
+  # Static files.
+  - type: static-files
+    hosts:
+      - static.merlinnot.com
+    root: ../static
+
+  # Redirect www to plain domain name.
+  - type: redirect
+
+    hosts:
+      - www.merlinnot.com
+    actions:
+      - host: merlinnot.com
+
+# copy-to: user@host:/opt/keter/incoming/

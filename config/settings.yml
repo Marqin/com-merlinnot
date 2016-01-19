@@ -1,0 +1,10 @@
+static-dir:     "_env:STATIC_DIR:static"
+host:           "_env:HOST:*4" # any IPv4 host
+port:           "_env:PORT:3000"
+ip-from-header: "_env:IP_FROM_HEADER:false"
+
+# Uncomment to set an explicit approot
+#approot:        "_env:APPROOT:http://localhost:3000"
+
+copyright: Insert copyright statement here
+#analytics: UA-YOURCODE
