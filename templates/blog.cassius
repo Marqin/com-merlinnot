@@ -1,0 +1,40 @@
+.icon
+  width: 1em;
+  height: 1em
+
+.btn-small
+  padding: .125rem .5rem
+
+.btn-nav:hover
+  box-shadow: inset 0 0 0 99999px rgba(0, 0, 0, .0625)
+
+.btn-link:hover
+  text-decoration: underline
+
+.SideBar
+  border-top: 1px solid rgba(255, 255, 255, .125)
+  overflow: auto
+  -webkit-overflow-scrolling: touch
+  top: 0
+  bottom: 0
+  left: 0
+
+@media (min-width: 40em)
+  .SideBar
+    position: fixed
+    width: 12rem
+    border-top: 0
+    border-right: 1px solid rgba(255, 255, 255, .125)
+  .Main
+    margin-left: 12rem
+
+@media (max-width: 40em)
+  .SideBar
+    a
+      img
+        position: fixed
+        top: 1rem
+        width: 3rem
+   
+.container
+  max-width: 52rem

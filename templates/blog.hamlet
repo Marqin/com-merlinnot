@@ -1,0 +1,30 @@
+<div>
+  <div .Main>
+    <div .sm-hide .fixed .top-0 .right-0 .m1>
+      <a href="#posts" .btn .btn-medium .btn-primary .white .bg-darken-3>posts
+    <div .container .px2 .sm-px3>
+      <main>
+        <div .mb3>
+          <header .py2 .mt3 .border-bottom>
+            <div .sm-flex .flex-center .flex-wrap>
+              <div .flex-auto>
+                <h1 .m0>Blog Title 1
+          <div .h5 .mxn1>
+            <span .muted>
+              <a href="/" title="merlinnot" .btn .compact .btn-link .p1>merlinnot
+            <span .muted> / #
+              <a href="/blog" title="blog" .btn .compact .btn-link .p1>blog
+            <span .muted> / #
+              <a href="/blog" title="blog" .btn .compact .btn-link .p1>Blog Title 1
+        <div .mb4>
+          <hr .m0>
+    <div .SideBar .py2>
+      <a href="/" .block .px2>
+        <img src=@{StaticR img_logo_png}>
+      <nav #posts>
+        <div .mt3>
+          <ul .list-reset .clearfix>
+            <li .col .sm-col-12 .col-6>
+              <a href="#" .btn .compact .btn-nav .block>Blog Title 0
+            <li .col .sm-col-12 .col-6 .active>
+              <a href="#" .btn .compact .btn-nav .block .black .bg-silver>Blog Title 1

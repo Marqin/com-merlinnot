@@ -14,17 +14,17 @@ $newline never
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
+
     ^{pageHead pc}
 
     \<!--[if lt IE 9]>
     \<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     \<![endif]-->
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
-    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
-
-  <body>
-    <div .container>
+  <body .silver .bg-black>
+    <div>
       <header>
       <div id="main" role="main">
         ^{pageBody pc}

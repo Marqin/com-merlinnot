@@ -6,3 +6,5 @@
 / HomeR GET
 
 /comment CommentR POST
+
+/blog BlogR GET
