@@ -2,7 +2,7 @@
   <div .Main>
     <div .clearfix .sm-hide .fixed .top-0 .right-0 .m1>
       <div .left .align-middle>
-        <img #LogoSmall src=@{StaticR img_logo_square_transparent_png}>
+        <img #LogoSmall src=@{StaticR img_logo_square_transparent_svg}>
       <div .right .mr1 .mt1 .align-middle>
         <a href="#posts" .btn .btn-medium .btn-primary .white .bg-black>posts
     <div .container .px2 .sm-px3>
@@ -25,7 +25,7 @@
             #{preEscapedToMarkup body}
     <div .SideBar .py2>
       <a href=@{HomeR} .block .px2 .sm-show>
-        <img src=@{StaticR img_logo_square_transparent_png}>
+        <img src=@{StaticR img_logo_square_transparent_svg}>
       <nav #posts>
         <div .mt3>
           <ul .list-reset .clearfix>
