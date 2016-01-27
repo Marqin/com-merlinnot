@@ -6,5 +6,9 @@ ip-from-header: "_env:IP_FROM_HEADER:false"
 # Uncomment to set an explicit approot
 #approot:        "_env:APPROOT:http://localhost:3000"
 
+database:
+  database: "_env:SQLITE_DATABASE:blog.sqlite3"
+  poolsize: "_env:SQLITE_POOLSIZE:10"
+  
 copyright: Insert copyright statement here
 #analytics: UA-YOURCODE

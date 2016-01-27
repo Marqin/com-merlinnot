@@ -8,23 +8,28 @@
           <header .py2 .mt3 .border-bottom>
             <div .sm-flex .flex-center .flex-wrap>
               <div .flex-auto>
-                <h1 .m0>Blog Title 1
+                <h1 .m0>#{postBodyTitle cpostb}
           <div .h5 .mxn1>
             <span .muted>
-              <a href="/" title="merlinnot" .btn .compact .btn-link .p1>merlinnot
+              <a href=@{HomeR} title="merlinnot" .btn .compact .btn-link .p1>merlinnot
             <span .muted> / #
-              <a href="/blog" title="blog" .btn .compact .btn-link .p1>blog
+              <a href=@{BlogR $ fst latestPost} title="latest post" .btn .compact .btn-link .p1>blog
             <span .muted> / #
-              <a href="/blog" title="blog" .btn .compact .btn-link .p1>Blog Title 1
+              <a href=@{BlogR $ postUrl cpostp} title="blog" .btn .compact .btn-link .p1>
+                #{postBodyTitle cpostb}
         <div .mb4>
           <hr .m0>
+            #{preEscapedToMarkup body}
     <div .SideBar .py2>
-      <a href="/" .block .px2>
-        <img src=@{StaticR img_logo_png}>
+      <a href=@{HomeR} .block .px2>
+        <img src=@{StaticR img_logo_square_transparent_png}>
       <nav #posts>
         <div .mt3>
           <ul .list-reset .clearfix>
-            <li .col .sm-col-12 .col-6>
-              <a href="#" .btn .compact .btn-nav .block>Blog Title 0
-            <li .col .sm-col-12 .col-6 .active>
-              <a href="#" .btn .compact .btn-nav .block .black .bg-silver>Blog Title 1
+            $forall (curl, title) <- posts
+              $if (curl == url)
+                <li .col .sm-col-12 .col-6 .active>
+                  <a href=@{BlogR curl} .btn .compact .btn-nav .block .black .bg-silver>#{title}
+              $else
+                <li .col .sm-col-12 .col-6>
+                  <a href=@{BlogR curl} .btn .compact .btn-nav .block>#{title}

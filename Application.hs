@@ -1,18 +1,20 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Application
-    ( getApplicationDev
-    , appMain
-    , develMain
-    , makeFoundation
-    , makeLogWare
-    -- * for DevelMain
-    , getApplicationRepl
-    , shutdownApp
-    -- * for GHCI
-    , handler
-    ) where
+  ( getApplicationDev
+  , appMain
+  , develMain
+  , makeFoundation
+  , makeLogWare
+  -- * for DevelMain
+  , getApplicationRepl
+  , shutdownApp
+  -- * for GHCI
+  , handler
+  ) where
 
-import Control.Monad.Logger                 (liftLoc)
+import Control.Monad.Logger                 (liftLoc, runLoggingT)
+import Database.Persist.Sqlite              (createSqlitePool, runSqlPool,
+                                             sqlDatabase, sqlPoolSize)
 import Import
 import Language.Haskell.TH.Syntax           (qLocation)
 import Network.Wai (Middleware)
@@ -30,6 +32,7 @@ import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
 import Handler.Common
 import Handler.Home
 import Handler.Comment
+import Handler.Post
 import Handler.Blog
 
 mkYesodDispatch "App" resourcesApp
@@ -42,8 +45,18 @@ makeFoundation appSettings = do
         (if appMutableStatic appSettings then staticDevel else static)
         (appStaticDir appSettings)
 
-    return App {..}
+    let mkFoundation appConnPool = App {..}
+        tempFoundation = mkFoundation $ error "connPool forced in tempFoundation"
+        logFunc = messageLoggerSource tempFoundation appLogger
 
+    pool <- flip runLoggingT logFunc $ createSqlitePool
+        (sqlDatabase $ appDatabaseConf appSettings)
+        (sqlPoolSize $ appDatabaseConf appSettings)
+
+    runLoggingT (runSqlPool (runMigration migrateAll) pool) logFunc
+
+    return $ mkFoundation pool
+    
 makeApplication :: App -> IO Application
 makeApplication foundation = do
     logWare <- makeLogWare foundation
@@ -123,3 +136,6 @@ shutdownApp _ = return ()
 ---------------------------------------------
 handler :: Handler a -> IO a
 handler h = getAppSettings >>= makeFoundation >>= flip unsafeHandler h
+
+db :: ReaderT SqlBackend (HandlerT App IO) a -> IO a
+db = handler . runDB

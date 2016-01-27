@@ -23,11 +23,13 @@ library
                      Foundation
                      Import
                      Import.NoFoundation
+                     Model
                      Settings
                      Settings.StaticFiles
                      Handler.Common
                      Handler.Home
                      Handler.Comment
+                     Handler.Post
                      Handler.Blog
 
     if flag(dev) || flag(library-only)
@@ -86,6 +88,12 @@ library
                  , time
                  , case-insensitive
                  , wai
+                 , blaze-markup
+                 , persistent
+                 , persistent-sqlite
+                 , esqueleto
+                 , blaze-html
+                 , markdown
 
 executable         com-merlinnot
     if flag(library-only)

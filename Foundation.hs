@@ -1,17 +1,19 @@
 module Foundation where
 
 import Import.NoFoundation
-import Text.Hamlet                 (hamletFile)
-import Text.Jasmine                (minifym)
-import Yesod.Core.Types            (Logger)
-import Yesod.Default.Util          (addStaticContentExternal)
-import qualified Yesod.Core.Unsafe as Unsafe
+import Database.Persist.Sql         (ConnectionPool, runSqlPool)
+import Text.Hamlet                  (hamletFile)
+import Text.Jasmine                 (minifym)
+import Yesod.Core.Types             (Logger)
+import Yesod.Default.Util           (addStaticContentExternal)
+import qualified Yesod.Core.Unsafe  as Unsafe
 
 -- The foundation datatype for the application. Every handler has
 -- access to the data present here.
 data App = App
     { appSettings    :: AppSettings
     , appStatic      :: Static -- ^ Settings for static file serving.
+    , appConnPool    :: ConnectionPool
     , appHttpManager :: Manager
     , appLogger      :: Logger
     }
@@ -73,6 +75,13 @@ instance Yesod App where
 
     makeLogger = return . appLogger
 
+instance YesodPersist App where
+    type YesodPersistBackend App = SqlBackend
+    runDB action = do
+        master <- getYesod
+        runSqlPool action $ appConnPool master
+instance YesodPersistRunner App where
+    getDBRunner = defaultGetDBRunner appConnPool
 
 instance RenderMessage App FormMessage where
     renderMessage _ _ = defaultFormMessage

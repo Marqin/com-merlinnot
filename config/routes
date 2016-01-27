@@ -7,4 +7,6 @@
 
 /comment CommentR POST
 
-/blog BlogR GET
+/post PostR POST
+
+/blog/#Text BlogR GET

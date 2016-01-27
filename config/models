@@ -1,0 +1,14 @@
+Post
+  url Text
+  UniqueUrl url
+
+PostBody
+  post PostId
+  time UTCTime default=CURRENT_TIME
+  title Text
+  body Text
+
+PostRequest json
+  url Text
+  title Text
+  body Text
