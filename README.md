@@ -10,6 +10,10 @@ It features:
 * GHCi development
 * Compiling for both tests and production
 * Basic yesod framework features
+* Type-safe, multi-backend database conector
+* RESTful api for adding and modifying posts
+* Responsive design of blog posts
+* Writing posts using markdown
 
 #### How to install
 
