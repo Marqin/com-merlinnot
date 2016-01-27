@@ -34,6 +34,7 @@ import Handler.Home
 import Handler.Comment
 import Handler.Post
 import Handler.Blog
+import Handler.BlogLatest
 
 mkYesodDispatch "App" resourcesApp
 

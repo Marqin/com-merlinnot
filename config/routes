@@ -9,4 +9,6 @@
 
 /post PostR POST
 
+/blog BlogLatestR GET
+
 /blog/#Text BlogR GET

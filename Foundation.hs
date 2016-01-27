@@ -11,11 +11,11 @@ import qualified Yesod.Core.Unsafe  as Unsafe
 -- The foundation datatype for the application. Every handler has
 -- access to the data present here.
 data App = App
-    { appSettings    :: AppSettings
-    , appStatic      :: Static -- ^ Settings for static file serving.
-    , appConnPool    :: ConnectionPool
-    , appHttpManager :: Manager
-    , appLogger      :: Logger
+    { appSettings        :: AppSettings
+    , appStatic          :: Static -- ^ Settings for static file serving.
+    , appConnPool        :: ConnectionPool
+    , appHttpManager     :: Manager
+    , appLogger          :: Logger
     }
 
 mkYesodData "App" $(parseRoutesFile "config/routes")
@@ -46,6 +46,9 @@ instance Yesod App where
     -- Routes not requiring authenitcation.
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
+    
+    --Routes requiring authentication.
+    isAuthorized PostR _ = return Authorized 
     -- Default to Authorized for now.
     isAuthorized _ _ = return Authorized
 
@@ -82,6 +85,9 @@ instance YesodPersist App where
         runSqlPool action $ appConnPool master
 instance YesodPersistRunner App where
     getDBRunner = defaultGetDBRunner appConnPool
+
+instance HasHttpManager App where
+    getHttpManager = appHttpManager
 
 instance RenderMessage App FormMessage where
     renderMessage _ _ = defaultFormMessage
