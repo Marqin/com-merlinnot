@@ -1,11 +1,14 @@
 <div>
   <div .Main>
-    <div .sm-hide .fixed .top-0 .right-0 .m1>
-      <a href="#posts" .btn .btn-medium .btn-primary .white .bg-darken-3>posts
+    <div .clearfix .sm-hide .fixed .top-0 .right-0 .m1>
+      <div .left .align-middle>
+        <img #LogoSmall src=@{StaticR img_logo_square_transparent_svg}>
+      <div .right .mr1 .mt1 .align-middle>
+        <a href="#posts" .btn .btn-medium .btn-primary .white .bg-black>posts
     <div .container .px2 .sm-px3>
       <main>
         <div .mb3>
-          <header .py2 .mt3 .border-bottom>
+          <header .py2 .mt3>
             <div .sm-flex .flex-center .flex-wrap>
               <div .flex-auto>
                 <h1 .m0>#{postBodyTitle cpostb}
@@ -15,14 +18,14 @@
             <span .muted> / #
               <a href=@{BlogR $ fst latestPost} title="latest post" .btn .compact .btn-link .p1>blog
             <span .muted> / #
-              <a href=@{BlogR $ postUrl cpostp} title="blog" .btn .compact .btn-link .p1>
+              <a href=@{BlogR $ postUrl cpostp} title=#{postBodyTitle cpostb} .btn .compact .btn-link .p1>
                 #{postBodyTitle cpostb}
         <div .mb4>
           <hr .m0>
             #{preEscapedToMarkup body}
     <div .SideBar .py2>
-      <a href=@{HomeR} .block .px2>
-        <img src=@{StaticR img_logo_square_transparent_png}>
+      <a href=@{HomeR} .block .px2 .sm-show>
+        <img src=@{StaticR img_logo_square_transparent_svg}>
       <nav #posts>
         <div .mt3>
           <ul .list-reset .clearfix>
