@@ -3,7 +3,9 @@ resolver: lts-4.1
 packages:
 - '.'
 
-extra-deps: []
+extra-deps:
+- load-env-0.1.1
+- yesod-auth-oauth2-0.1.7
 
 flags:
   com-merlinnot:
